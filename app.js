@@ -2,16 +2,16 @@
 let amigos = [];
 
 function agregarAmigo() {
-    let nombre = document.querySelector("#amigo").value;
+    let entrada = document.querySelector("#amigo");
 
-    // interrumpir ejecucion si no hay nada
-    if (nombre == "") {
-        alert("Por favor, inserte un nombre.");
+    // interrumpir ejecucion si no hay texto
+    if (entrada.value == "") {
+        alert("Por favor, inserte un entrada.value.");
         return;
     }
 
-    amigos.push(nombre);
-    nombre = "";
+    amigos.push(entrada.value);
+    entrada.value = "";
 
     actualizarLista();
 }
@@ -26,4 +26,18 @@ function actualizarLista() {
         item.appendChild(text);
         lista.appendChild(item);
     });
+}
+
+function sortearAmigo() {
+    // interrumpir ejecucion si el arreglo esta vacio
+    if (amigos.length == 0) {
+        alert("La lista esta vacia");
+        return;
+    }
+
+    let resultado = document.querySelector("#resultado");
+    let index = Math.floor(Math.random() * amigos.length);
+    let sorteo = amigos[index];
+    
+    resultado.innerHTML = sorteo;
 }
